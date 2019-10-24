@@ -37,10 +37,10 @@ heuristica.Aspirador <- function(atual){
   if(is.null(atual$desc))
     return(Inf)
   ## k = quadrados sujos
-  k = sum(desc[1:4])
+  k = sum(atual$desc[1:4])
   
   ## h(obj) = 2 * k || 2 k + 1
-  if(as.numeric(desc[as.numeric(desc[5])]) == 1)
+  if(as.numeric(atual$desc[as.numeric(atual$desc[5])]) == 1)
     return(2*k)
   
   return(2*k + 1)
@@ -96,7 +96,7 @@ geraFilhos.Aspirador <- function(obj) {
     filhosDesc <- lapply(operadores, function(op) desc+op)
   } else {
     
-    operadores <- list(c(0,0,0,-1,0), c(0,0,0,0,-1), c(0,0,0,0-2))
+    operadores <- list(c(0,0,0,-1,0), c(0,0,0,0,-1), c(0,0,0,0,-2))
     
     filhosDesc <- lapply(operadores, function(op) desc+op)
   }
